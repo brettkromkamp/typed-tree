@@ -1,5 +1,5 @@
 """
-TreeConstant enumeration.
+app.py script (for functional testing purposes).
 
 May 01, 2019
 Brett Alistair Kromkamp (brett.kromkamp@gmail.com)
