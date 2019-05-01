@@ -26,8 +26,10 @@ tree.add_node('Mark', parent_pointer='Jane', node_type='male', edge_type='brothe
 tree.display('Harry')
 print('***** DEPTH-FIRST ITERATION *****')
 for identifier in tree.traverse('Harry'):
-    print(identifier)
+    node = tree[identifier]
+    print(f"{node.identifier} [{str(node.type)}]")
 
 print('***** BREADTH-FIRST ITERATION *****')
-for node in tree.traverse('Harry', mode=TreeConstant.BREADTH):
-    print(node)
+for identifier in tree.traverse('Harry', mode=TreeConstant.BREADTH):
+    node = tree[identifier]
+    print(f"{node.identifier} [{str(node.type)}]")

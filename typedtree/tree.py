@@ -40,11 +40,11 @@ class Tree:
 
     def display(self, identifier: str, depth: int = 0) -> None:
         node = self[identifier]
-        node_type = node.parent.type if node.parent else 'Undefined'
+        edge_type = node.parent.type if node.parent else 'Undefined'
         if depth == 0:
-            print(f"{node.identifier} [{str(node.type)}] - ({node_type})")
+            print(f"{node.identifier} [{str(node.type)}] - ({edge_type})")
         else:
-            print("\t" * depth, f"{node.identifier} [{str(node.type)}] - ({node_type})")
+            print("\t" * depth, f"{node.identifier} [{str(node.type)}] - ({edge_type})")
 
         depth += 1
         for child in node.children:
