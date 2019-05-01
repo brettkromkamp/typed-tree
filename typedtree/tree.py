@@ -22,24 +22,29 @@ class Tree:
         return self.__nodes
 
     def add_node(self, identifier: str,
-                 parent: Optional[str] = None,
+                 parent_pointer: Optional[str] = None,
                  node_type: Optional[str] = None,
                  edge_type: Optional[str] = None,
                  payload: Optional[Any] = None) -> Node:
+
+        if parent_pointer is not None:
+            parent = Edge(parent_pointer, edge_type)
+            self[parent_pointer].add_child(Edge(identifier, edge_type))
+        else:
+            parent = None
+
         node = Node(identifier, parent=parent, type=node_type, payload=payload)
         self[identifier] = node
-
-        if parent is not None:
-            self[parent].add_child(Edge(identifier, edge_type))
 
         return node
 
     def display(self, identifier: str, depth: int = 0) -> None:
         node = self[identifier]
+        node_type = node.parent.type if node.parent else 'Undefined'
         if depth == 0:
-            print(f"{node.identifier} [{str(node.type)}]")
+            print(f"{node.identifier} [{str(node.type)}] - ({node_type})")
         else:
-            print("\t" * depth, f"{node.identifier} [{str(node.type)}]")
+            print("\t" * depth, f"{node.identifier} [{str(node.type)}] - ({node_type})")
 
         depth += 1
         for child in node.children:
