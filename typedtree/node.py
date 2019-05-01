@@ -4,8 +4,10 @@ Node class.
 May 01, 2019
 Brett Alistair Kromkamp (brett.kromkamp@gmail.com)
 """
+
 from collections import namedtuple
 from typing import Optional, List, Any
+
 
 Edge = namedtuple('Edge', ['pointer', 'type'])
 
