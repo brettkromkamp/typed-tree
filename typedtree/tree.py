@@ -7,8 +7,8 @@ Brett Alistair Kromkamp (brett.kromkamp@gmail.com)
 
 from typing import Dict, Optional, Generator, Any
 
-from tree.node import Node, Edge
-from tree.treeconstant import TreeConstant
+from typedtree.node import Node, Edge
+from typedtree.treeconstant import TreeConstant
 
 
 class Tree:

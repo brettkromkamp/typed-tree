@@ -5,8 +5,8 @@ May 01, 2019
 Brett Alistair Kromkamp (brett.kromkamp@gmail.com)
 """
 
-from tree.tree import Tree
-from tree.treeconstant import TreeConstant
+from typedtree.tree import Tree
+from typedtree.treeconstant import TreeConstant
 
 
 tree = Tree()
