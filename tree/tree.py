@@ -7,7 +7,7 @@ Brett Alistair Kromkamp (brett.kromkamp@gmail.com)
 
 from typing import Dict, Optional, Generator, Any
 
-from tree.node import Node
+from tree.node import Node, Edge
 from tree.treeconstant import TreeConstant
 
 
@@ -21,25 +21,29 @@ class Tree:
     def nodes(self) -> Dict:
         return self.__nodes
 
-    def add_node(self, identifier: str, parent: Optional[str] = None, payload: Optional[Any] = None) -> Node:
-        node = Node(identifier, parent, payload)
+    def add_node(self, identifier: str,
+                 parent: Optional[str] = None,
+                 node_type: Optional[str] = None,
+                 edge_type: Optional[str] = None,
+                 payload: Optional[Any] = None) -> Node:
+        node = Node(identifier, parent=parent, type=node_type, payload=payload)
         self[identifier] = node
 
         if parent is not None:
-            self[parent].add_child(identifier)
+            self[parent].add_child(Edge(identifier, edge_type))
 
         return node
 
     def display(self, identifier: str, depth: int = 0) -> None:
-        children = self[identifier].children
-        if depth is TreeConstant.ROOT:
-            print("{0}".format(identifier))
+        node = self[identifier]
+        if depth == 0:
+            print(f"{node.identifier} [{str(node.type)}]")
         else:
-            print("\t" * depth, "{0}".format(identifier))
+            print("\t" * depth, f"{node.identifier} [{str(node.type)}]")
 
         depth += 1
-        for child in children:
-            self.display(child, depth)  # Recursive call.
+        for child in node.children:
+            self.display(child.pointer, depth)  # Recursive call.
 
     def traverse(self, identifier: str, mode: TreeConstant = TreeConstant.DEPTH) -> Generator:
         # Python generator. Loosely based on an algorithm from 'Essential LISP'
@@ -48,8 +52,8 @@ class Tree:
         yield identifier
         queue = self[identifier].children
         while queue:
-            yield queue[0]
-            expansion = self[queue[0]].children
+            yield queue[0].pointer
+            expansion = self[queue[0].pointer].children
             if mode is TreeConstant.DEPTH:
                 queue = expansion + queue[1:]  # Depth-first traversal.
             elif mode is TreeConstant.BREADTH:
