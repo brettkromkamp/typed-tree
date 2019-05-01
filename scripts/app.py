@@ -23,7 +23,9 @@ tree.add_node('Carol', parent_pointer='Jill', node_type='female', edge_type='fri
 tree.add_node('Grace', parent_pointer='Bill', node_type='female', edge_type='sister')
 tree.add_node('Mark', parent_pointer='Jane', node_type='male', edge_type='brother')
 
+print('***** TREE STRUCTURE *****')
 tree.display('Harry')
+
 print('***** DEPTH-FIRST ITERATION *****')
 for identifier in tree.traverse('Harry'):
     node = tree[identifier]
