@@ -10,15 +10,10 @@ Why?
 
 Pending.
 
-Feature Support
----------------
-
-Pending.
-
 Installation
 ------------
 
-TypedTree officially supports Python 3.4–3.7.
+TypedTree officially supports Python 3.6–3.7.
 
 Pending.
 
@@ -28,7 +23,7 @@ Example
 .. code-block:: python
 
     from typedtree.tree import Tree
-    from typedtree.treeconstant import TreeConstant
+    from typedtree.traversalconstant import TraversalConstant
 
 
     tree = Tree()
@@ -40,7 +35,7 @@ Example
     tree.add_node('Diane', parent_pointer='Jane', node_type='female', edge_type='friend')
     tree.add_node('George', parent_pointer='Diane', node_type='male', edge_type='colleague')
     tree.add_node('Mary', parent_pointer='Diane', node_type='female', edge_type='friend')
-    tree.add_node('Jill', parent_pointer='George', node_type='female', edge_type='wife')
+    tree.add_node('Jill', parent_pointer='George')
     tree.add_node('Carol', parent_pointer='Jill', node_type='female', edge_type='friend')
     tree.add_node('Grace', parent_pointer='Bill', node_type='female', edge_type='sister')
     tree.add_node('Mark', parent_pointer='Jane', node_type='male', edge_type='brother')
@@ -51,12 +46,12 @@ Example
     print('***** DEPTH-FIRST ITERATION *****')
     for identifier in tree.traverse('Harry'):
         node = tree[identifier]
-        print(f"{node.identifier} [{str(node.type)}]")
+        print(f"{node.identifier} [{node.type or 'Undefined'}]")
 
     print('***** BREADTH-FIRST ITERATION *****')
-    for identifier in tree.traverse('Harry', mode=TreeConstant.BREADTH):
+    for identifier in tree.traverse('Harry', mode=TraversalConstant.BREADTH):
         node = tree[identifier]
-        print(f"{node.identifier} [{str(node.type)}]")
+        print(f"{node.identifier} [{node.type or 'Undefined'}]")
 
 **Output**
 
@@ -68,7 +63,7 @@ Example
              Joe [male] - (son)
              Diane [female] - (friend)
                  George [male] - (colleague)
-                     Jill [female] - (wife)
+                     Jill [Undefined] - (Undefined)
                          Carol [female] - (friend)
                  Mary [female] - (friend)
              Mark [male] - (brother)
@@ -80,7 +75,7 @@ Example
     Joe [male]
     Diane [female]
     George [male]
-    Jill [female]
+    Jill [Undefined]
     Carol [female]
     Mary [female]
     Mark [male]
@@ -96,7 +91,7 @@ Example
     Grace [female]
     George [male]
     Mary [female]
-    Jill [female]
+    Jill [Undefined]
     Carol [female]
 
 Documentation

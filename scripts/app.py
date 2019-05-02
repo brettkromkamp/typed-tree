@@ -6,7 +6,7 @@ Brett Alistair Kromkamp (brett.kromkamp@gmail.com)
 """
 
 from typedtree.tree import Tree
-from typedtree.treeconstant import TreeConstant
+from typedtree.traversalconstant import TraversalConstant
 
 
 tree = Tree()
@@ -18,7 +18,7 @@ tree.add_node('Joe', parent_pointer='Jane', node_type='male', edge_type='son')
 tree.add_node('Diane', parent_pointer='Jane', node_type='female', edge_type='friend')
 tree.add_node('George', parent_pointer='Diane', node_type='male', edge_type='colleague')
 tree.add_node('Mary', parent_pointer='Diane', node_type='female', edge_type='friend')
-tree.add_node('Jill', parent_pointer='George', node_type='female', edge_type='wife')
+tree.add_node('Jill', parent_pointer='George')
 tree.add_node('Carol', parent_pointer='Jill', node_type='female', edge_type='friend')
 tree.add_node('Grace', parent_pointer='Bill', node_type='female', edge_type='sister')
 tree.add_node('Mark', parent_pointer='Jane', node_type='male', edge_type='brother')
@@ -29,9 +29,9 @@ tree.display('Harry')
 print('***** DEPTH-FIRST ITERATION *****')
 for identifier in tree.traverse('Harry'):
     node = tree[identifier]
-    print(f"{node.identifier} [{str(node.type)}]")
+    print(f"{node.identifier} [{node.type or 'Undefined'}]")
 
 print('***** BREADTH-FIRST ITERATION *****')
-for identifier in tree.traverse('Harry', mode=TreeConstant.BREADTH):
+for identifier in tree.traverse('Harry', mode=TraversalConstant.BREADTH):
     node = tree[identifier]
-    print(f"{node.identifier} [{str(node.type)}]")
+    print(f"{node.identifier} [{node.type or 'Undefined'}]")
