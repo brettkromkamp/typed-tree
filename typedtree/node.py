@@ -13,7 +13,6 @@ Edge = namedtuple('Edge', ['pointer', 'type'])
 
 
 class Node:
-    # Based on this implementation: http://www.quesucede.com/page/show/id/python-3-tree-implementation
 
     def __init__(self, identifier: str,
                  parent: Optional[Edge] = None,
