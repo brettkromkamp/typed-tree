@@ -22,13 +22,12 @@ Example
 
 .. code-block:: python
 
-    from typedtree.tree import Tree
     from typedtree.traversalconstant import TraversalConstant
-
+    from typedtree.tree import Tree
 
     tree = Tree()
 
-    tree.add_node('Harry', node_type='male')  # root node
+    tree.add_node('Harry', node_type='male')  # A node without a parent pointer is by definition the root node
     tree.add_node('Jane', parent_pointer='Harry', node_type='female', edge_type='daughter')
     tree.add_node('Bill', parent_pointer='Harry', node_type='male', edge_type='son')
     tree.add_node('Joe', parent_pointer='Jane', node_type='male', edge_type='son')
@@ -37,8 +36,8 @@ Example
     tree.add_node('Mary', parent_pointer='Diane', node_type='female', edge_type='friend')
     tree.add_node('Jill', parent_pointer='George')
     tree.add_node('Carol', parent_pointer='Jill', node_type='female', edge_type='friend')
-    tree.add_node('Grace', parent_pointer='Bill', node_type='female', edge_type='sister')
-    tree.add_node('Mark', parent_pointer='Jane', node_type='male', edge_type='brother')
+    tree.add_node('Grace', parent_pointer='Bill', node_type='female')
+    tree.add_node('Mark', parent_pointer='Jane', edge_type='brother')
 
     print('***** TREE STRUCTURE *****')
     tree.display('Harry')
@@ -46,39 +45,39 @@ Example
     print('***** DEPTH-FIRST ITERATION *****')
     for identifier in tree.traverse('Harry'):
         node = tree[identifier]
-        print(f"{node.identifier} [{node.type or 'Undefined'}]")
+        print(f"{node.identifier} [{node.type or '*Undefined*'}]")
 
     print('***** BREADTH-FIRST ITERATION *****')
     for identifier in tree.traverse('Harry', mode=TraversalConstant.BREADTH):
         node = tree[identifier]
-        print(f"{node.identifier} [{node.type or 'Undefined'}]")
+        print(f"{node.identifier} [{node.type or '*Undefined*'}]")
 
 **Output**
 
 .. code-block:: text
 
     ***** TREE STRUCTURE *****
-    Harry [male] - (Undefined)
+    Harry [male] - (*Undefined*)
          Jane [female] - (daughter)
              Joe [male] - (son)
              Diane [female] - (friend)
                  George [male] - (colleague)
-                     Jill [Undefined] - (Undefined)
+                     Jill [*Undefined*] - (*Undefined*)
                          Carol [female] - (friend)
                  Mary [female] - (friend)
-             Mark [male] - (brother)
+             Mark [*Undefined*] - (brother)
          Bill [male] - (son)
-             Grace [female] - (sister)
+             Grace [female] - (*Undefined*)
     ***** DEPTH-FIRST ITERATION *****
     Harry [male]
     Jane [female]
     Joe [male]
     Diane [female]
     George [male]
-    Jill [Undefined]
+    Jill [*Undefined*]
     Carol [female]
     Mary [female]
-    Mark [male]
+    Mark [*Undefined*]
     Bill [male]
     Grace [female]
     ***** BREADTH-FIRST ITERATION *****
@@ -87,11 +86,11 @@ Example
     Bill [male]
     Joe [male]
     Diane [female]
-    Mark [male]
+    Mark [*Undefined*]
     Grace [female]
     George [male]
     Mary [female]
-    Jill [Undefined]
+    Jill [*Undefined*]
     Carol [female]
 
 Documentation

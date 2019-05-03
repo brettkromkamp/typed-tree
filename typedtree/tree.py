@@ -12,12 +12,12 @@ from typedtree.traversalconstant import TraversalConstant
 
 
 class Tree:
-    
+
     def __init__(self) -> None:
         self.__nodes: Dict = {}
 
     @property
-    def nodes(self) -> Dict:
+    def nodes(self) -> Dict[str, Node]:
         return self.__nodes
 
     def add_node(self, identifier: str,
@@ -39,8 +39,8 @@ class Tree:
     def display(self, identifier: str, depth: int = 0) -> None:
         node = self[identifier]
 
-        node_type = node.type if node.type else 'Undefined'
-        edge_type = node.parent.type or 'Undefined' if node.parent else 'Undefined'
+        node_type = node.type if node.type else '*Undefined*'
+        edge_type = node.parent.type or '*Undefined*' if node.parent else '*Undefined*'
 
         if depth == 0:
             print(f"{node.identifier} [{node_type}] - ({edge_type})")
@@ -52,8 +52,8 @@ class Tree:
             self.display(child.pointer, depth)  # Recursive call.
 
     def traverse(self, identifier: str, mode: TraversalConstant = TraversalConstant.DEPTH) -> Generator:
-        # Python generator. Loosely based on an algorithm from 'Essential LISP'
-        # by John R. Anderson, Albert T. Corbett, and Brian J. Reiser, page 239-241
+        # Loosely based on an algorithm from 'Essential LISP' by John R. Anderson,
+        # Albert T. Corbett, and Brian J. Reiser, page 239-241
 
         yield identifier
         queue = self[identifier].children

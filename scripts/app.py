@@ -5,13 +5,12 @@ May 01, 2019
 Brett Alistair Kromkamp (brett.kromkamp@gmail.com)
 """
 
-from typedtree.tree import Tree
 from typedtree.traversalconstant import TraversalConstant
-
+from typedtree.tree import Tree
 
 tree = Tree()
 
-tree.add_node('Harry', node_type='male')  # root node
+tree.add_node('Harry', node_type='male')  # A node without a parent pointer is by definition the root node
 tree.add_node('Jane', parent_pointer='Harry', node_type='female', edge_type='daughter')
 tree.add_node('Bill', parent_pointer='Harry', node_type='male', edge_type='son')
 tree.add_node('Joe', parent_pointer='Jane', node_type='male', edge_type='son')
@@ -20,8 +19,8 @@ tree.add_node('George', parent_pointer='Diane', node_type='male', edge_type='col
 tree.add_node('Mary', parent_pointer='Diane', node_type='female', edge_type='friend')
 tree.add_node('Jill', parent_pointer='George')
 tree.add_node('Carol', parent_pointer='Jill', node_type='female', edge_type='friend')
-tree.add_node('Grace', parent_pointer='Bill', node_type='female', edge_type='sister')
-tree.add_node('Mark', parent_pointer='Jane', node_type='male', edge_type='brother')
+tree.add_node('Grace', parent_pointer='Bill', node_type='female')
+tree.add_node('Mark', parent_pointer='Jane', edge_type='brother')
 
 print('***** TREE STRUCTURE *****')
 tree.display('Harry')
@@ -29,9 +28,9 @@ tree.display('Harry')
 print('***** DEPTH-FIRST ITERATION *****')
 for identifier in tree.traverse('Harry'):
     node = tree[identifier]
-    print(f"{node.identifier} [{node.type or 'Undefined'}]")
+    print(f"{node.identifier} [{node.type or '*Undefined*'}]")
 
 print('***** BREADTH-FIRST ITERATION *****')
 for identifier in tree.traverse('Harry', mode=TraversalConstant.BREADTH):
     node = tree[identifier]
-    print(f"{node.identifier} [{node.type or 'Undefined'}]")
+    print(f"{node.identifier} [{node.type or '*Undefined*'}]")
