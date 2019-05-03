@@ -14,7 +14,7 @@ from typedtree.traversalconstant import TraversalConstant
 class Tree:
 
     def __init__(self) -> None:
-        self.__nodes: Dict = {}
+        self.__nodes: Dict[str, Node] = {}
 
     @property
     def nodes(self) -> Dict[str, Node]:
@@ -49,7 +49,7 @@ class Tree:
 
         depth += 1
         for child in node.children:
-            self.display(child.pointer, depth)  # Recursive call.
+            self.display(child.pointer, depth)  # Recursive call
 
     def traverse(self, identifier: str, mode: TraversalConstant = TraversalConstant.DEPTH) -> Generator:
         # Loosely based on an algorithm from 'Essential LISP' by John R. Anderson,
