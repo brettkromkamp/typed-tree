@@ -10,7 +10,9 @@ from typedtree.tree import Tree
 
 tree = Tree()
 
-tree.add_node('Harry', node_type='male')  # A node without a parent pointer is by definition the root node
+# A node without a parent pointer is by definition the root node
+tree.add_node('Harry', node_type='male')
+
 tree.add_node('Jane', parent_pointer='Harry', node_type='female', edge_type='daughter')
 tree.add_node('Bill', parent_pointer='Harry', node_type='male', edge_type='son')
 tree.add_node('Joe', parent_pointer='Jane', node_type='male', edge_type='son')
