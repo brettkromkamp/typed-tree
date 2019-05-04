@@ -1,18 +1,11 @@
 TypedTree by Brett Kromkamp
 ===========================
 
-TypedTree provides a **tree data structure** and accompanying (simple) API that allows adding type information to its
-nodes and references to sub-nodes (i.e., children); particularly useful for visualisation purposes. TypedTree is based
-on this implementation: `Python tree implementation`_.
-
-Why?
-----
-
 `Contextualise`_, a knowledge management application that I am currently developing, allows the user to visualise their
 topics of interest (i.e., *nodes*) and the relationships between those topics (i.e, *references to other nodes*) using a
 network graph visualisation. To that effect, TypedTree makes it straightforward to not only enable the visualisation of
-the actual graph itself but also to enhance the visualisation with information related to the type of each node and the
-references to other nodes, respectively (an example of which is provided below).
+the actual (network) graph itself but also to enhance the visualisation with information related to the type of each
+node and the references to other nodes, respectively (an example of which is provided below).
 
     Contextualise's network graph visualisation is *interactive* in that it allows the user to navigate between topics
     of interest by clicking on the actual node that they want to navigate to.
@@ -21,6 +14,8 @@ references to other nodes, respectively (an example of which is provided below).
    :alt: Network graph visualisation in Contextualise
 
 *A typical network graph visualisation in Contextualise showing topics of interest and the relationships between those topics*
+
+TypedTree is based on this implementation: `Python tree implementation`_.
 
 Installation
 ------------
@@ -55,15 +50,15 @@ Example
     tree.add_node('Model Y', parent_pointer='Tesla', node_type='car', edge_type='product')
     tree.add_node('Roadster', parent_pointer='Tesla', node_type='car', edge_type='product')
 
-    print('***** TREE STRUCTURE *****')
+    print('\n***** TREE STRUCTURE *****')
     tree.display('Elon Musk')
 
-    print('***** DEPTH-FIRST ITERATION *****')
+    print('\n***** DEPTH-FIRST ITERATION *****')
     for identifier in tree.traverse('Elon Musk'):
         node = tree[identifier]
         print(f"{node.identifier} [{node.type or '*Undefined*'}]")
 
-    print('***** BREADTH-FIRST ITERATION *****')
+    print('\n***** BREADTH-FIRST ITERATION *****')
     for identifier in tree.traverse('Elon Musk', mode=TraversalConstant.BREADTH):
         node = tree[identifier]
         print(f"{node.identifier} [{node.type or '*Undefined*'}]")
@@ -87,6 +82,7 @@ Example
              Model X [car] - (product)
              Model Y [car] - (product)
              Roadster [car] - (product)
+
     ***** DEPTH-FIRST ITERATION *****
     Elon Musk [person]
     Lyndon Rive [person]
@@ -101,6 +97,7 @@ Example
     Model X [car]
     Model Y [car]
     Roadster [car]
+
     ***** BREADTH-FIRST ITERATION *****
     Elon Musk [person]
     Lyndon Rive [person]
@@ -133,4 +130,3 @@ How to Contribute
 .. _Contextualise: https://github.com/brettkromkamp/contextualise
 .. _the repository: https://github.com/brettkromkamp/typed-tree
 .. _AUTHORS: https://github.com/brettkromkamp/typed-tree/blob/master/AUTHORS.rst
-

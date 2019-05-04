@@ -26,15 +26,15 @@ tree.add_node('Model X', parent_pointer='Tesla', node_type='car', edge_type='pro
 tree.add_node('Model Y', parent_pointer='Tesla', node_type='car', edge_type='product')
 tree.add_node('Roadster', parent_pointer='Tesla', node_type='car', edge_type='product')
 
-print('***** TREE STRUCTURE *****')
+print('\n***** TREE STRUCTURE *****')
 tree.display('Elon Musk')
 
-print('***** DEPTH-FIRST ITERATION *****')
+print('\n***** DEPTH-FIRST ITERATION *****')
 for identifier in tree.traverse('Elon Musk'):
     node = tree[identifier]
     print(f"{node.identifier} [{node.type or '*Undefined*'}]")
 
-print('***** BREADTH-FIRST ITERATION *****')
+print('\n***** BREADTH-FIRST ITERATION *****')
 for identifier in tree.traverse('Elon Musk', mode=TraversalConstant.BREADTH):
     node = tree[identifier]
     print(f"{node.identifier} [{node.type or '*Undefined*'}]")
