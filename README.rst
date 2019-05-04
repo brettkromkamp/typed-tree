@@ -1,14 +1,22 @@
 TypedTree by Brett Kromkamp
 ===========================
 
-Based on this implementation: http://www.quesucede.com/page/show/id/python-3-tree-implementation
-
-Pending.
+TypedTree provides a **tree data structure** and accompanying (simple) API that allows adding type information to its
+vertices and edges; useful for visualisation purposes. TypedTree is Based on this implementation: `Python tree implementation`_.
 
 Why?
 ----
 
-Pending.
+`Contextualise`_, a knowledge management application that I am currently developing, allows the user to visualise their
+topics of interest and the relationship between those topics using a network graph visualisation. To that effect,
+TypedTree makes it straightforward to not only enable the visualisation of the actual graph itself but also to enhance
+the visualisation with information related to the type of the nodes and the relationships between the nodes,
+respectively (an example of which is provided below).
+
+.. image:: resources/graph-visualisation.png
+   :alt: Network graph visualisation in Contextualise
+
+*Network graph visualisation in Contextualise*
 
 Installation
 ------------
@@ -28,72 +36,81 @@ Example
     tree = Tree()
 
     # A node without a parent pointer is by definition the root node
-    tree.add_node('Harry', node_type='male')
+    tree.add_node('Elon Musk', node_type='person')
 
-    tree.add_node('Jane', parent_pointer='Harry', node_type='female', edge_type='daughter')
-    tree.add_node('Bill', parent_pointer='Harry', node_type='male', edge_type='son')
-    tree.add_node('Joe', parent_pointer='Jane', node_type='male', edge_type='son')
-    tree.add_node('Diane', parent_pointer='Jane', node_type='female', edge_type='friend')
-    tree.add_node('George', parent_pointer='Diane', node_type='male', edge_type='colleague')
-    tree.add_node('Mary', parent_pointer='Diane', node_type='female', edge_type='friend')
-    tree.add_node('Jill', parent_pointer='George')
-    tree.add_node('Carol', parent_pointer='Jill', node_type='female', edge_type='friend')
-    tree.add_node('Grace', parent_pointer='Bill', node_type='female')
-    tree.add_node('Mark', parent_pointer='Jane', edge_type='brother')
+    tree.add_node('Lyndon Rive', parent_pointer='Elon Musk', node_type='person', edge_type='family')
+    tree.add_node('SpaceX', parent_pointer='Elon Musk', node_type='company', edge_type='founder')
+    tree.add_node('Tesla', parent_pointer='Elon Musk', node_type='company', edge_type='founder')
+    tree.add_node('Solar City', parent_pointer='Lyndon Rive', node_type='company', edge_type='co-founder')
+    tree.add_node('Solar Energy Services', parent_pointer='Solar City', node_type='product', edge_type='service')
+    tree.add_node('Falcon 9', parent_pointer='SpaceX', node_type='rocket', edge_type='technology')
+    tree.add_node('Falcon Heavy', parent_pointer='SpaceX', node_type='rocket', edge_type='technology')
+    tree.add_node('Dragon', parent_pointer='SpaceX', node_type='space-ship', edge_type='technology')
+    tree.add_node('Model S', parent_pointer='Tesla', node_type='car', edge_type='product')
+    tree.add_node('Model X', parent_pointer='Tesla', node_type='car', edge_type='product')
+    tree.add_node('Model Y', parent_pointer='Tesla', node_type='car', edge_type='product')
+    tree.add_node('Roadster', parent_pointer='Tesla', node_type='car', edge_type='product')
 
     print('***** TREE STRUCTURE *****')
-    tree.display('Harry')
+    tree.display('Elon Musk')
 
     print('***** DEPTH-FIRST ITERATION *****')
-    for identifier in tree.traverse('Harry'):
+    for identifier in tree.traverse('Elon Musk'):
         node = tree[identifier]
         print(f"{node.identifier} [{node.type or '*Undefined*'}]")
 
     print('***** BREADTH-FIRST ITERATION *****')
-    for identifier in tree.traverse('Harry', mode=TraversalConstant.BREADTH):
+    for identifier in tree.traverse('Elon Musk', mode=TraversalConstant.BREADTH):
         node = tree[identifier]
         print(f"{node.identifier} [{node.type or '*Undefined*'}]")
+
 
 **Output**
 
 .. code-block:: text
 
     ***** TREE STRUCTURE *****
-    Harry [male] - (*Undefined*)
-         Jane [female] - (daughter)
-             Joe [male] - (son)
-             Diane [female] - (friend)
-                 George [male] - (colleague)
-                     Jill [*Undefined*] - (*Undefined*)
-                         Carol [female] - (friend)
-                 Mary [female] - (friend)
-             Mark [*Undefined*] - (brother)
-         Bill [male] - (son)
-             Grace [female] - (*Undefined*)
+    Elon Musk [person] - (*Undefined*)
+         Lyndon Rive [person] - (family)
+             Solar City [company] - (co-founder)
+                 Solar Energy Services [product] - (service)
+         SpaceX [company] - (founder)
+             Falcon 9 [rocket] - (technology)
+             Falcon Heavy [rocket] - (technology)
+             Dragon [space-ship] - (technology)
+         Tesla [company] - (founder)
+             Model S [car] - (product)
+             Model X [car] - (product)
+             Model Y [car] - (product)
+             Roadster [car] - (product)
     ***** DEPTH-FIRST ITERATION *****
-    Harry [male]
-    Jane [female]
-    Joe [male]
-    Diane [female]
-    George [male]
-    Jill [*Undefined*]
-    Carol [female]
-    Mary [female]
-    Mark [*Undefined*]
-    Bill [male]
-    Grace [female]
+    Elon Musk [person]
+    Lyndon Rive [person]
+    Solar City [company]
+    Solar Energy Services [product]
+    SpaceX [company]
+    Falcon 9 [rocket]
+    Falcon Heavy [rocket]
+    Dragon [space-ship]
+    Tesla [company]
+    Model S [car]
+    Model X [car]
+    Model Y [car]
+    Roadster [car]
     ***** BREADTH-FIRST ITERATION *****
-    Harry [male]
-    Jane [female]
-    Bill [male]
-    Joe [male]
-    Diane [female]
-    Mark [*Undefined*]
-    Grace [female]
-    George [male]
-    Mary [female]
-    Jill [*Undefined*]
-    Carol [female]
+    Elon Musk [person]
+    Lyndon Rive [person]
+    SpaceX [company]
+    Tesla [company]
+    Solar City [company]
+    Falcon 9 [rocket]
+    Falcon Heavy [rocket]
+    Dragon [space-ship]
+    Model S [car]
+    Model X [car]
+    Model Y [car]
+    Roadster [car]
+    Solar Energy Services [product]
 
 Documentation
 -------------
@@ -108,5 +125,8 @@ How to Contribute
 #. Write a test which shows that the bug was fixed or that the feature works as expected.
 #. Send a pull request and bug the maintainer until it gets merged and published. :) Make sure to add yourself to AUTHORS_.
 
+.. _Python tree implementation: http://www.quesucede.com/page/show/id/python-3-tree-implementation
+.. _Contextualise:: https://github.com/brettkromkamp/contextualise
 .. _the repository: https://github.com/brettkromkamp/typed-tree
 .. _AUTHORS: https://github.com/brettkromkamp/typed-tree/blob/master/AUTHORS.rst
+

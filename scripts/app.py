@@ -11,28 +11,30 @@ from typedtree.tree import Tree
 tree = Tree()
 
 # A node without a parent pointer is by definition the root node
-tree.add_node('Harry', node_type='male')
+tree.add_node('Elon Musk', node_type='person')
 
-tree.add_node('Jane', parent_pointer='Harry', node_type='female', edge_type='daughter')
-tree.add_node('Bill', parent_pointer='Harry', node_type='male', edge_type='son')
-tree.add_node('Joe', parent_pointer='Jane', node_type='male', edge_type='son')
-tree.add_node('Diane', parent_pointer='Jane', node_type='female', edge_type='friend')
-tree.add_node('George', parent_pointer='Diane', node_type='male', edge_type='colleague')
-tree.add_node('Mary', parent_pointer='Diane', node_type='female', edge_type='friend')
-tree.add_node('Jill', parent_pointer='George')
-tree.add_node('Carol', parent_pointer='Jill', node_type='female', edge_type='friend')
-tree.add_node('Grace', parent_pointer='Bill', node_type='female')
-tree.add_node('Mark', parent_pointer='Jane', edge_type='brother')
+tree.add_node('Lyndon Rive', parent_pointer='Elon Musk', node_type='person', edge_type='family')
+tree.add_node('SpaceX', parent_pointer='Elon Musk', node_type='company', edge_type='founder')
+tree.add_node('Tesla', parent_pointer='Elon Musk', node_type='company', edge_type='founder')
+tree.add_node('Solar City', parent_pointer='Lyndon Rive', node_type='company', edge_type='co-founder')
+tree.add_node('Solar Energy Services', parent_pointer='Solar City', node_type='product', edge_type='service')
+tree.add_node('Falcon 9', parent_pointer='SpaceX', node_type='rocket', edge_type='technology')
+tree.add_node('Falcon Heavy', parent_pointer='SpaceX', node_type='rocket', edge_type='technology')
+tree.add_node('Dragon', parent_pointer='SpaceX', node_type='space-ship', edge_type='technology')
+tree.add_node('Model S', parent_pointer='Tesla', node_type='car', edge_type='product')
+tree.add_node('Model X', parent_pointer='Tesla', node_type='car', edge_type='product')
+tree.add_node('Model Y', parent_pointer='Tesla', node_type='car', edge_type='product')
+tree.add_node('Roadster', parent_pointer='Tesla', node_type='car', edge_type='product')
 
 print('***** TREE STRUCTURE *****')
-tree.display('Harry')
+tree.display('Elon Musk')
 
 print('***** DEPTH-FIRST ITERATION *****')
-for identifier in tree.traverse('Harry'):
+for identifier in tree.traverse('Elon Musk'):
     node = tree[identifier]
     print(f"{node.identifier} [{node.type or '*Undefined*'}]")
 
 print('***** BREADTH-FIRST ITERATION *****')
-for identifier in tree.traverse('Harry', mode=TraversalConstant.BREADTH):
+for identifier in tree.traverse('Elon Musk', mode=TraversalConstant.BREADTH):
     node = tree[identifier]
     print(f"{node.identifier} [{node.type or '*Undefined*'}]")
