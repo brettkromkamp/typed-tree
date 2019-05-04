@@ -2,16 +2,17 @@ TypedTree by Brett Kromkamp
 ===========================
 
 TypedTree provides a **tree data structure** and accompanying (simple) API that allows adding type information to its
-vertices and edges; useful for visualisation purposes. TypedTree is Based on this implementation: `Python tree implementation`_.
+nodes and references to sub-nodes (i.e., children); particularly useful for visualisation purposes. TypedTree is based
+on this implementation: `Python tree implementation`_.
 
 Why?
 ----
 
 `Contextualise`_, a knowledge management application that I am currently developing, allows the user to visualise their
-topics of interest and the relationship between those topics using a network graph visualisation. To that effect,
-TypedTree makes it straightforward to not only enable the visualisation of the actual graph itself but also to enhance
-the visualisation with information related to the type of the nodes and the relationships between the nodes,
-respectively (an example of which is provided below).
+topics of interest (i.e., *vertices*) and the relationship between those topics (i.e, *edges*) using a network graph
+visualisation. To that effect, TypedTree makes it straightforward to not only enable the visualisation of the actual
+graph itself but also to enhance the visualisation with information related to the type of each node and the
+references to other nodes, respectively (an example of which is provided below).
 
 .. image:: resources/graph-visualisation.png
    :alt: Network graph visualisation in Contextualise
