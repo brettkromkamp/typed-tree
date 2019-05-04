@@ -15,7 +15,7 @@ the actual graph itself but also to enhance the visualisation with information r
 references to other nodes, respectively (an example of which is provided below).
 
     Contextualise's network graph visualisation is *interactive* in that it allows the user to navigate between topics
-    of interest by clicking on the actual node in the graph that they want to navigate to.
+    of interest by clicking on the actual node that they want to navigate to.
 
 .. image:: resources/graph-visualisation.png
    :alt: Network graph visualisation in Contextualise
