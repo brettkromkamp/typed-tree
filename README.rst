@@ -17,12 +17,29 @@ node and the references to other nodes, respectively (an example of which is pro
 
 TypedTree is based on this implementation: `Python tree implementation`_.
 
-Installation
-------------
+Install the Development Version
+-------------------------------
 
-TypedTree officially supports Python 3.6–3.7.
+If you have `Git <https://git-scm.com/>`_ installed on your system, it is possible to install the development version
+of ``TypedTree``.
 
-Pending.
+Before installing the development version, you may need to uninstall the standard version of ``TypedTree`` using
+``pip``::
+
+    $ pip uninstall typed-tree
+
+Then do::
+
+    $ git clone https://github.com/brettkromkamp/typed-tree
+    $ cd typed-tree
+    $ pip install -e .
+
+The ``pip install -e .`` command allows you to follow the development branch as it changes by creating links in the
+right places and installing the command line scripts to the appropriate locations.
+
+Then, if you want to update ``TypedTree`` at any time, in the same directory do::
+
+    $ git pull
 
 Example
 -------
