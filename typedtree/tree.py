@@ -52,8 +52,8 @@ class Tree:
             self.display(child.pointer, depth)  # Recursive call
 
     def traverse(self, identifier: str, mode: TraversalConstant = TraversalConstant.DEPTH) -> Generator:
-        # Loosely based on an algorithm from 'Essential LISP' by John R. Anderson,
-        # Albert T. Corbett, and Brian J. Reiser, page 239-241
+        # Loosely based on an algorithm from 'Essential LISP' by John R. Anderson, Albert T. Corbett
+        # and Brian J. Reiser, page 239-241
 
         yield identifier
         queue = self[identifier].children

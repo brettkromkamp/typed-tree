@@ -3,8 +3,8 @@ TypedTree by Brett Kromkamp
 
 `Contextualise`_, a knowledge management application that I am currently developing, allows the user to visualise their
 topics of interest (i.e., *nodes*) and the relationships between those topics (i.e, *references to other nodes*) using a
-network graph visualisation. To that effect, TypedTree makes it straightforward to not only enable the visualisation of
-the actual (network) graph itself but also to enhance the visualisation with information related to the type of each
+network graph visualisation. To that effect, ``TypedTree`` makes it straightforward to not only enable the visualisation
+of the actual (network) graph itself but also to enhance the visualisation with information related to the type of each
 node and the references to other nodes, respectively (an example of which is provided below).
 
     Contextualise's network graph visualisation is *interactive* in that it allows the user to navigate between topics
@@ -15,7 +15,7 @@ node and the references to other nodes, respectively (an example of which is pro
 
 *A typical network graph visualisation in Contextualise showing topics of interest and the relationships between those topics*
 
-TypedTree is based on this implementation: `Python tree implementation`_.
+TypedTree is based on an earlier implementation of mine: `Python tree implementation`_.
 
 Install the Development Version
 -------------------------------
