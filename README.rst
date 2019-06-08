@@ -144,6 +144,6 @@ How to Contribute
 #. Send a pull request and bug the maintainer until it gets merged and published. :) Make sure to add yourself to AUTHORS_.
 
 .. _Python tree implementation: http://www.quesucede.com/page/show/id/python-3-tree-implementation
-.. _Contextualise: https://github.com/brettkromkamp/contextualise
+.. _Contextualise: https://trello.com/b/43ZVFVWE/contextualise-application
 .. _the repository: https://github.com/brettkromkamp/typed-tree
 .. _AUTHORS: https://github.com/brettkromkamp/typed-tree/blob/master/AUTHORS.rst
