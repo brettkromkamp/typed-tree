@@ -8,15 +8,17 @@ Brett Alistair Kromkamp (brett.kromkamp@gmail.com)
 from collections import namedtuple
 from typing import Optional, List, Any
 
-Edge = namedtuple('Edge', ['pointer', 'type'])
+Edge = namedtuple("Edge", ["pointer", "type"])
 
 
 class Node:
-
-    def __init__(self, identifier: str,
-                 parent: Optional[Edge] = None,
-                 type: Optional[str] = None,
-                 payload: Optional[Any] = None) -> None:
+    def __init__(
+        self,
+        identifier: str,
+        parent: Optional[Edge] = None,
+        type: Optional[str] = None,
+        payload: Optional[Any] = None,
+    ) -> None:
         self.__identifier = identifier
 
         self.parent = parent
