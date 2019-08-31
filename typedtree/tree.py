@@ -8,7 +8,7 @@ Brett Alistair Kromkamp (brett.kromkamp@gmail.com)
 from typing import Dict, Optional, Generator, Any
 
 from typedtree.node import Node, Edge
-from typedtree.traversalconstant import TraversalConstant
+from typedtree.traversalmode import TraversalMode
 
 
 class Tree:
@@ -54,7 +54,7 @@ class Tree:
             self.display(child.pointer, depth)  # Recursive call
 
     def traverse(
-        self, identifier: str, mode: TraversalConstant = TraversalConstant.DEPTH
+        self, identifier: str, mode: TraversalMode = TraversalMode.DEPTH
     ) -> Generator:
         # Loosely based on an algorithm from 'Essential LISP' by John R. Anderson, Albert T. Corbett
         # and Brian J. Reiser, page 239-241
@@ -64,9 +64,9 @@ class Tree:
         while queue:
             yield queue[0].pointer
             expansion = self[queue[0].pointer].children
-            if mode is TraversalConstant.DEPTH:
+            if mode is TraversalMode.DEPTH:
                 queue = expansion + queue[1:]  # Depth-first traversal
-            elif mode is TraversalConstant.BREADTH:
+            elif mode is TraversalMode.BREADTH:
                 queue = queue[1:] + expansion  # Breadth-first traversal
 
     def __getitem__(self, key: str) -> Node:
