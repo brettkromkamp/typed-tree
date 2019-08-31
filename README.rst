@@ -5,17 +5,17 @@ TypedTree by Brett Kromkamp
 topics of interest (i.e., *nodes*) and the relationships between those topics (i.e, *references to other nodes*) using a
 network graph visualisation. To that effect, ``TypedTree`` makes it straightforward to not only enable the visualisation
 of the actual (network) graph itself but also to enhance the visualisation with information related to the type of each
-node and the references to other nodes, respectively (an example of which is provided below).
-
-    Contextualise's network graph visualisation is *interactive* in that it allows the user to navigate between topics
-    of interest by clicking on the actual node that they want to navigate to.
-
-.. image:: resources/graph-visualisation.png
-   :alt: Network graph visualisation in Contextualise
-
-*A typical network graph visualisation in Contextualise showing topics of interest and the relationships between those topics*
+node and the references to other nodes, respectively.
 
 TypedTree is based on an earlier implementation of mine: `Python tree implementation`_.
+
+Installation
+------------
+
+``TypedTree`` officially supports Python 3.6–3.7. To install ``TypedTree``, simply::
+
+    $ pip install typed-tree
+
 
 Install the Development Version
 -------------------------------

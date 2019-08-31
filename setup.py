@@ -17,10 +17,10 @@ with open(os.path.join(here, 'HISTORY.rst'), encoding='utf-8') as f:
     HISTORY = f.read()
 
 setup(name='typed-tree',
-      version='0.0.1',  # Bump version NUMBER *after* starting (git flow) release.
+      version='1.0.1',  # Bump version NUMBER *after* starting (git flow) release.
       description='TypedTree provides a tree structure that allows adding type information to its nodes and relations, respectively.',
       long_description=README + '\n\n' + HISTORY,
-      keywords='typedtree, data structure, hierarchy',
+      keywords='typed tree, data structure, hierarchy, tree, visualization',
       url='https://github.com/brettkromkamp/typed-tree',
       author='Brett Alistair Kromkamp',
       author_email='brett.kromkamp@gmail.com',
