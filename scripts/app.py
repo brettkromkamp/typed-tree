@@ -5,7 +5,7 @@ May 01, 2019
 Brett Alistair Kromkamp (brett.kromkamp@gmail.com)
 """
 
-from typedtree.traversalconstant import TraversalConstant
+from typedtree.traversalmode import TraversalMode
 from typedtree.tree import Tree
 
 tree = Tree()
@@ -35,6 +35,6 @@ for identifier in tree.traverse('Elon Musk'):
     print(f"{node.identifier} [{node.type or '*Undefined*'}]")
 
 print('\n***** BREADTH-FIRST ITERATION *****')
-for identifier in tree.traverse('Elon Musk', mode=TraversalConstant.BREADTH):
+for identifier in tree.traverse('Elon Musk', mode=TraversalMode.BREADTH):
     node = tree[identifier]
     print(f"{node.identifier} [{node.type or '*Undefined*'}]")
