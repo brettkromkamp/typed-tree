@@ -7,6 +7,9 @@ network graph visualisation. To that effect, ``TypedTree`` makes it straightforw
 of the actual (network) graph itself but also to enhance the visualisation with information related to the type of each
 node and the references to other nodes, respectively.
 
+.. image:: resources/graph-visualisation.png
+   :alt: TypedTree used for visualisation purposes (both the nodes and edges have a ``type`` label)
+
 TypedTree is based on an earlier implementation of mine: `Python tree implementation`_.
 
 Installation
@@ -143,7 +146,7 @@ How to Contribute
 #. Write a test which shows that the bug was fixed or that the feature works as expected.
 #. Send a pull request and bug the maintainer until it gets merged and published. :) Make sure to add yourself to AUTHORS_.
 
-.. _Python tree implementation: http://www.quesucede.com/page/show/id/python-3-tree-implementation
-.. _Contextualise: https://trello.com/b/43ZVFVWE/contextualise-application
+.. _Python tree implementation: https://github.com/caesar0301/treelib
+.. _Contextualise: https://github.com/brettkromkamp/contextualise
 .. _the repository: https://github.com/brettkromkamp/typed-tree
 .. _AUTHORS: https://github.com/brettkromkamp/typed-tree/blob/master/AUTHORS.rst
