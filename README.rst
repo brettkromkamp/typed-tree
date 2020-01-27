@@ -10,6 +10,8 @@ node and the references to other nodes, respectively.
 .. image:: resources/graph-visualisation.png
    :alt: TypedTree used for visualisation purposes (both the nodes and edges have a ``type`` label)
 
+*TypedTree used for visualisation purposes (both the nodes and edges have a ``type`` label)*
+
 TypedTree is based on an earlier implementation of mine: `Python tree implementation`_.
 
 Installation
