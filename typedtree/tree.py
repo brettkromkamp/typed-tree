@@ -5,7 +5,7 @@ May 01, 2019
 Brett Alistair Kromkamp (brett.kromkamp@gmail.com)
 """
 
-from typing import Dict, Optional, Generator, Any
+from typing import Dict, Optional, Generator, Any, List
 
 from typedtree.node import Node, Edge
 from typedtree.traversalmode import TraversalMode
@@ -29,7 +29,7 @@ class Tree:
     ) -> Node:
 
         parent = None
-        if parent_pointer is not None:
+        if parent_pointer:
             parent = Edge(parent_pointer, edge_type)
             self[parent_pointer].add_child(Edge(identifier, edge_type))
 
@@ -37,6 +37,18 @@ class Tree:
         self[identifier] = node
 
         return node
+
+    def get_siblings(self, identifier) -> Dict[str, Node]:
+        result = {}
+        node = self[identifier]
+        if node.parent:  # By definition the root node has no parent, so need to check
+
+            # Effectively returning all of the "other" siblings by excluding the Edge object with the
+            # same identifier as the one passed in as a parameter. Would this be the expected behaviour?
+            edges = [edge for edge in self[node.parent.pointer].children if edge.pointer != identifier]
+            for edge in edges:
+                result[edge.pointer] = self[edge.pointer]
+        return result
 
     def display(self, identifier: str, depth: int = 0) -> None:
         node = self[identifier]
