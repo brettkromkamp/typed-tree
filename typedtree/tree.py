@@ -65,10 +65,10 @@ class Tree:
         # Loosely based on an algorithm from 'Essential LISP' by John R. Anderson, Albert T. Corbett
         # and Brian J. Reiser, page 239-241
 
-        yield identifier
+        yield self[identifier]
         queue = self[identifier].children
         while queue:
-            yield queue[0].pointer
+            yield self[queue[0].pointer]
             expansion = self[queue[0].pointer].children
             if mode is TraversalMode.DEPTH:
                 queue = expansion + queue[1:]  # Depth-first traversal
