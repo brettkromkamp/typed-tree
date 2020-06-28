@@ -61,7 +61,9 @@ class Tree:
         for child in node.children:
             self.display(child.pointer, depth)  # Recursive call
 
-    def traverse(self, identifier: str, mode: TraversalMode = TraversalMode.DEPTH) -> Generator:
+    def traverse(
+        self, identifier: str, mode: TraversalMode = TraversalMode.DEPTH
+    ) -> Generator:
         # Loosely based on an algorithm from 'Essential LISP' by John R. Anderson, Albert T. Corbett
         # and Brian J. Reiser, page 239-241
 
