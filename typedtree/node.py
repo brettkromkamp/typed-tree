@@ -13,7 +13,11 @@ Edge = namedtuple("Edge", ["pointer", "type"])
 
 class Node:
     def __init__(
-        self, identifier: str, parent: Optional[Edge] = None, type: Optional[str] = None, payload: Optional[Any] = None,
+        self,
+        identifier: str,
+        parent: Optional[Edge] = None,
+        type: Optional[str] = None,
+        payload: Optional[Any] = None,
     ) -> None:
         self.__identifier = identifier
 

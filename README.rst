@@ -1,11 +1,7 @@
 TypedTree by Brett Kromkamp
 ===========================
 
-`Contextualise`_, a knowledge management application that I am currently developing, allows the user to visualise their
-topics of interest (i.e., *nodes*) and the relationships between those topics (i.e, *references to other nodes*) using a
-network graph visualisation. To that effect, ``TypedTree`` makes it straightforward to not only enable the visualisation
-of the actual (network) graph itself but also to enhance the visualisation with information related to the type of each
-node and the references to other nodes, respectively.
+`Contextualise`_, a knowledge management application that I am currently developing, allows the user to visualise their topics of interest (i.e., *nodes*) and the relationships between those topics (that is, *references to other nodes*) using a network graph visualisation. To that effect, ``TypedTree`` makes it straightforward to not only enable the visualisation of the actual (network) graph itself but also to enhance the visualisation with information related to the type of each node and the references to other nodes, respectively.
 
 .. image:: resources/graph-visualisation.png
    :alt: TypedTree used for visualisation purposes (both the nodes and edges have a 'type' label)
@@ -17,7 +13,7 @@ TypedTree is based on an earlier implementation of mine: `Python tree implementa
 Installation
 ------------
 
-``TypedTree`` officially supports Python 3.6–3.8. To install ``TypedTree``, simply::
+``TypedTree`` officially supports Python 3.6–3.10. To install ``TypedTree``, simply::
 
     $ pip install typed-tree
 
@@ -25,11 +21,9 @@ Installation
 Install the Development Version
 -------------------------------
 
-If you have `Git <https://git-scm.com/>`_ installed on your system, it is possible to install the development version
-of ``TypedTree``.
+If you have `Git <https://git-scm.com/>`_ installed on your system, it is possible to install the development version of ``TypedTree``.
 
-Before installing the development version, you may need to uninstall the standard version of ``TypedTree`` using
-``pip``::
+Before installing the development version, you may need to uninstall the standard version of ``TypedTree`` using ``pip``::
 
     $ pip uninstall typed-tree
 
@@ -39,8 +33,7 @@ Then do::
     $ cd typed-tree
     $ pip install -e .
 
-The ``pip install -e .`` command allows you to follow the development branch as it changes by creating links in the
-right places and installing the command line scripts to the appropriate locations.
+The ``pip install -e .`` command allows you to follow the development branch as it changes by creating links in the right places and installing the command line scripts to the appropriate locations.
 
 Then, if you want to update ``TypedTree`` at any time, in the same directory do::
 
@@ -76,13 +69,11 @@ Example
     tree.display('Elon Musk')
 
     print('\n***** DEPTH-FIRST ITERATION *****')
-    for identifier in tree.traverse('Elon Musk'):
-        node = tree[identifier]
+    for node in tree.traverse('Elon Musk'):
         print(f"{node.identifier} [{node.type or '*Undefined*'}]")
 
     print('\n***** BREADTH-FIRST ITERATION *****')
-    for identifier in tree.traverse('Elon Musk', mode=TraversalMode.BREADTH):
-        node = tree[identifier]
+    for node in tree.traverse('Elon Musk', mode=TraversalMode.BREADTH):
         print(f"{node.identifier} [{node.type or '*Undefined*'}]")
 
 
