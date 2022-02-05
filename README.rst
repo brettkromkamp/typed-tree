@@ -1,7 +1,7 @@
 TypedTree by Brett Kromkamp
 ===========================
 
-`Contextualise`_, a knowledge management application that I am currently developing, allows the user to visualise their topics of interest (i.e., *nodes*) and the relationships between those topics (that is, *references to other nodes*) using a network graph visualisation. To that effect, ``TypedTree`` makes it straightforward to not only enable the visualisation of the actual (network) graph itself but also to enhance the visualisation with information related to the type of each node and the references to other nodes, respectively.
+`Contextualise`_, a knowledge management application that I am currently developing, allows the user to visualise their topics of interest (that is, *nodes*) and the relationships between those topics (that is, *references to other nodes*) using a network graph visualisation. To that effect, ``TypedTree`` makes it straightforward to not only enable the visualisation of the actual (network) graph itself but also to enhance the visualisation with information related to the type of each node and the references to other nodes, respectively.
 
 .. image:: resources/graph-visualisation.png
    :alt: TypedTree used for visualisation purposes (both the nodes and edges have a 'type' label)
