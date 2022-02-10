@@ -13,7 +13,7 @@ TypedTree is based on an earlier implementation of mine: `Python tree implementa
 Installation
 ------------
 
-``TypedTree`` officially supports Python 3.6–3.10. To install ``TypedTree``, simply::
+``TypedTree`` officially supports Python 3.7–3.10. To install ``TypedTree``, simply::
 
     $ pip install typed-tree
 
