@@ -12,7 +12,6 @@ TypedTree officially supports Python 3.7–3.10. To install TypedTree, simply:
 
     $ pip install --upgrade typed-tree
 
-
 ## Install the Development Version
 
 If you have [Git](https://git-scm.com/) installed on your system, it is possible to install the development version of TypedTree.
