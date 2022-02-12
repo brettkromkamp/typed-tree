@@ -2,8 +2,6 @@
 
 [Contextualise](https://contextualise.dev/), a knowledge management application that I am currently developing, allows the user to visualise their topics of interest (that is, *nodes*) and the relationships between those topics (that is, *references to other nodes*) using a network graph visualisation. To that effect, TypedTree makes it straightforward to not only enable the visualisation of the actual (network) graph itself but also to enhance the visualisation with information related to the type of each node and the references to other nodes, respectively.
 
-*TypedTree used for visualisation purposes (both the nodes and edges have a 'type' label)*
-
 TypedTree is based on an earlier implementation of mine: [Python tree implementation](https://github.com/caesar0301/treelib).
 
 ## Installation
