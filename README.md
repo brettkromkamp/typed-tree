@@ -31,9 +31,10 @@ Then, if you want to update TypedTree at any time, in the same directory do:
     $ git pull
 
 ## Example
+
 ```python
-from typedtree.traversalmode import TraversalMode
-from typedtree.tree import Tree
+from typedtree import TraversalMode
+from typedtree import Tree
 
 tree = Tree()
 
