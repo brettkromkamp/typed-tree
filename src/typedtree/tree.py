@@ -38,7 +38,7 @@ class Tree:
 
         return node
 
-    def get_siblings(self, identifier) -> List[Node]:
+    def get_siblings(self, identifier: str) -> List[Node]:
         result = []
         node = self[identifier]
         if node.parent:  # By definition the root node has no parent, so need to check
